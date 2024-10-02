@@ -27,6 +27,8 @@ To run point guided transformation, run:
 ![素材图像](docs/image/horse.jpg "original image")
 ![结果图像](docs/image/horse2.png "result image")
 
+![变换演示](docs/image/meeting_01.mp4 "video")
+
 ## Acknowledgement
 - [Image Deformation Using Moving Least Squares](https://people.engr.tamu.edu/schaefer/research/mls.pdf)
 - [Image Warping by Radial Basis Functions : Application to Facial Expressions](https://www.sci.utah.edu/~gerig/CS6640-F2010/Project3/Arad-1995.pdf)
