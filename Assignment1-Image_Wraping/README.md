@@ -20,11 +20,11 @@ To run point guided transformation, run:
 ```
 ## Results
 
-![素材图像](ustc-DIP-learning/Assignment1-Image_Wraping/docs/image/pikaqiu.jpg "original image")
-![结果图像](ustc-DIP-learning\Assignment1-Image_Wraping\docs\image\result1.png "result image")
+![素材图像](docs/image/pikaqiu.jpg "original image")
+![结果图像](docs\image\result1.png "result image")
 
-![素材图像](ustc-DIP-learning/Assignment1-Image_Wraping/docs/image/horse.jpg "original image")
-![结果图像](ustc-DIP-learning\Assignment1-Image_Wraping\docs\image\result1.png "result image")
+![素材图像](docs/image/horse.jpg "original image")
+![结果图像](docs\image\result1.png "result image")
 
 ## Acknowledgement
 - [Image Deformation Using Moving Least Squares](https://people.engr.tamu.edu/schaefer/research/mls.pdf)
