@@ -9,9 +9,6 @@ To install requirements:
 ```
 
 ## Running
-```python
-    pip install -r requirements.txt
-```
 To run basic transformation, run:
 ```
 python run_global_transform.py
@@ -23,10 +20,10 @@ To run point guided transformation, run:
 ```
 ## Results
 
-![素材图像](ustc-DIP-learning\Assignment1-Image_Wraping\docs\image\pikaqiu.jpg "original image")
+![素材图像](ustc-DIP-learning/Assignment1-Image_Wraping/docs/image/pikaqiu.jpg "original image")
 ![结果图像](ustc-DIP-learning\Assignment1-Image_Wraping\docs\image\result1.png "result image")
 
-![素材图像](ustc-DIP-learning\Assignment1-Image_Wraping\docs\image\horse.jpg "original image")
+![素材图像](ustc-DIP-learning/Assignment1-Image_Wraping/docs/image/horse.jpg "original image")
 ![结果图像](ustc-DIP-learning\Assignment1-Image_Wraping\docs\image\result1.png "result image")
 
 ## Acknowledgement
