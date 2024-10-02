@@ -71,8 +71,8 @@ def point_guided_deformation(image, source_pts, target_pts, alpha=0.8, eps=1e-8)
         w = compute_weights(v, source_pts, alpha)
         # 计算加权质心
         w_sum = np.sum(w)
-        if w_sum>1:
-            print('beside point',v,w_sum)
+        #if w_sum>1:
+            #print('beside point',v,w_sum)
         p_centroid = np.sum(w[:, np.newaxis] * source_pts, axis=0) / w_sum
         q_centroid = np.sum(w[:, np.newaxis] * target_pts, axis=0) / w_sum
          # 计算去中心化的坐标
@@ -110,6 +110,10 @@ def point_guided_deformation(image, source_pts, target_pts, alpha=0.8, eps=1e-8)
         if 0 <= new_positions[idx][0] < wide and 0 <= new_positions[idx][1] < h:
             # 逐个像素替换
             warped_image[new_positions[idx][1], new_positions[idx][0]] = image[v[1], v[0]]
+        # 检查并修复空点
+    mask = (warped_image == 0).all(axis=2)  # 查找空点的掩码
+    warped_image = cv2.inpaint(warped_image, mask.astype(np.uint8), inpaintRadius=3, flags=cv2.INPAINT_TELEA)  # 使用 OpenCV 的 inpaint 方法修复空点
+    
     return warped_image
 
 def run_warping():
