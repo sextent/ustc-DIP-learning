@@ -19,7 +19,7 @@ def upload_image(img):
 def record_points(evt: gr.SelectData):
     global points_src, points_dst, image
     x, y = evt.index[0], evt.index[1]  # 获取点击的坐标
-    
+    print(x,y)
     # 判断奇偶次来分别记录控制点和目标点
     if len(points_src) == len(points_dst):
         points_src.append([x, y])  # 奇数次点击为控制点
@@ -40,17 +40,76 @@ def record_points(evt: gr.SelectData):
     return marked_image
 
 # 执行仿射变换
-
-def point_guided_deformation(image, source_pts, target_pts, alpha=1.0, eps=1e-8):
-    """ 
-    Return
-    ------
-        A deformed image.
-    """
+def point_guided_deformation(image, source_pts, target_pts, alpha=0.8, eps=1e-8):
+    print(source_pts)
+    # 获取图像尺寸
+    h, wide = image.shape[:2]
+    print(h,wide)
+    # 创建空白的变形图像,进行复制
+    warped_image = np.zeros_like(image)
+    # 生成网格坐标
+    grid_x, grid_y = np.meshgrid(np.arange(wide), np.arange(h))
+    grid_points = np.vstack((grid_x.flatten(), grid_y.flatten())).T
+    # 初始化新位置数组
+    new_positions = np.zeros_like(grid_points, dtype=int)
+    print(new_positions.shape)
+    print(new_positions[1])
+    #print(new_positions[1, 0])
+    #print(new_positions[1:10, 0])
+    # 计算权重函数
+    def compute_weights(v, p, alpha):
+        dist2 = np.sum((v - p)**2, axis=1) + eps
+        w = dist2 ** (-alpha)
+        return w
     
-    warped_image = np.array(image)
-    ### FILL: 基于MLS or RBF 实现 image warping
-
+    # 计算每个像素点的变形
+    for idx, v in enumerate(grid_points):
+        # 跳过与 source_pts 重合的点
+        if np.any(np.all(np.isclose(v, source_pts), axis=1)):
+            continue  # 如果 v 和 source_pts 中的任意点相等，跳过该点
+        # 计算权重
+        w = compute_weights(v, source_pts, alpha)
+        # 计算加权质心
+        w_sum = np.sum(w)
+        if w_sum>1:
+            print('beside point',v,w_sum)
+        p_centroid = np.sum(w[:, np.newaxis] * source_pts, axis=0) / w_sum
+        q_centroid = np.sum(w[:, np.newaxis] * target_pts, axis=0) / w_sum
+         # 计算去中心化的坐标
+        p_hat = source_pts - p_centroid
+        q_hat = target_pts - q_centroid
+        #if idx<10:
+            #print(p_centroid,q_centroid)
+            #print(p_hat,q_hat)
+        # 构建矩阵
+        p_hat_T = p_hat.T
+        w_diag = np.diag(w)
+        M = p_hat_T @ w_diag @ p_hat
+        escape_point=0
+        #if np.linalg.det(M)>0.01:
+            #print(np.linalg.det(M))
+         # 如果矩阵 M 不可逆，跳过该点
+        if np.linalg.det(M) < eps:
+            new_positions[idx] = v
+            escape_point=escape_point+1
+            # print('escape')
+            continue
+        #print('escape_point is:',escape_point)
+        # 计算仿射矩阵 A,np.linalg.inv为求逆操作
+        M1 = np.linalg.inv(M) @ (p_hat.T @ w_diag @ q_hat) 
+        A = M1
+        # 计算新位置
+        v_hat = v - p_centroid
+        new_v = v_hat @ A + q_centroid
+        new_positions[idx] = new_v
+        # 将新位置映射回图像坐标系
+        # 对新坐标取整数
+        new_positions[idx] = np.round(new_v).astype(int)  # 先取整，再转换为整数
+        # 边界检查，确保在合法范围内
+        # 原始位置v
+        if 0 <= new_positions[idx][0] < wide and 0 <= new_positions[idx][1] < h:
+            # 逐个像素替换
+            warped_image[new_positions[idx][1], new_positions[idx][0]] = image[v[1], v[0]]
     return warped_image
 
 def run_warping():
