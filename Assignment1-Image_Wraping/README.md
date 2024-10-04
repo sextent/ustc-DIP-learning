@@ -18,6 +18,7 @@ To run point guided transformation, run:
 ```
  python run_point_transform.py
 ```
+To see vedio result,click:[演示视频](docs/image/meeting_01.mp4)
 ## Results
 
 ![素材图像](docs/image/pikaqiu.jpg "original image")
