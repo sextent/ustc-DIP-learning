@@ -12,7 +12,8 @@
 See [作业03-Play_with_GANs.pptx](https://rec.ustc.edu.cn/share/705bfa50-6e53-11ef-b955-bb76c0fede49) for detailed requirements.
 
 ## Task 2: DragGAN for image editing
-    Combine DragGAN with automatic facial landmark detection
+Combine DragGAN with automatic facial landmark detection
+模型checkpoints太大导致无法上传Github，故将其删去。若要运行依照下面使用说明使用。    
     
 ### 实验结果：实现了自动处理功能
 <img src="./results/gif/2.gif" width=80%>
