@@ -12,6 +12,6 @@ My homework page in USTC's DIP course 2024.
 ### 第二次作业：神经网络与泊松融合
 - [作业2：神经网络与泊松融合](./Assignment2-DIP_with_Pytorch/report.md)
 ### 第三次作业：GragGANs
-- [作业3：GragGANs](./Assignment3-Play_with_GANs/README)
+- [作业3：GragGANs](./Assignment3-Play_with_GANs/README.md)
 ### 第四次作业：3DGS
 - [作业4：3DGS](./Assignment4-3DGS/README.md)
