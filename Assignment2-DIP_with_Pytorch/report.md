@@ -10,7 +10,7 @@
 
 以下分别展现两个结果的对比。
 - 结果一：
-  ![monalisa](./results/poisson_edit/monalisa.png)
+  ![monalisa](./results/poisson/monalisa.png)
 - 结果二：
   - 对于数据集下载，为了适配windows系统，写了一个脚本，将数据集下载到本地，然后解压到指定目录。
 
@@ -32,8 +32,8 @@
 
 
   ### 论文里给的架构:
-  ![](./results/segmentation/result_1_2.png)
-  ![](./results/segmentation/result_2_2.png)
-  ![](./results/segmentation/result_3_2.png)
-  ![](./results/segmentation/result_4_2.png)
-  ![](./results/segmentation/result_5_2.png)
+  ![](./results/possion/result_1_2.png)
+  ![](./results/possion/result_2_2.png)
+  ![](./results/possion/result_3_2.png)
+  ![](./results/possion/result_4_2.png)
+  ![](./results/possion/result_5_2.png)
