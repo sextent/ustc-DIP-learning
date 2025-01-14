@@ -75,7 +75,6 @@ Since we use a pure PyTorch implementation, the training speed and GPU memory us
 
 ### results
 
-![chair](./output/chair.gif)
 
-![lego](./output/lego.gif)
+<img src="./output/lego.gif" width="70%">
 
