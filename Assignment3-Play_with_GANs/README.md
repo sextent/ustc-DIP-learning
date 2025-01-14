@@ -11,31 +11,19 @@
 \
 See [作业03-Play_with_GANs.pptx](https://rec.ustc.edu.cn/share/705bfa50-6e53-11ef-b955-bb76c0fede49) for detailed requirements.
 
-## Task 1: GAN for segmentation
-    Increment hw2 with discrimitive loss
-### 实验结果：训练一百轮的结果如下
-![image](./results/img/cgan1.png)
-![image](./results/img/cgan2.png)
-![image](./results/img/cgan3.png)
-使用新的loss有效增加了性能。
 ## Task 2: DragGAN for image editing
     Combine DragGAN with automatic facial landmark detection
 ### 实验结果：实现了自动处理功能
 <!-- 插入结果gif动图 -->
-<img src=./gif/2.gif width=80% />
+<img src=./gif/2.gif width=80%>
 
 #### 使用说明
 下载模型文件，运行：
-'''
-    python scripts/download_model.py
-
-'''
+     python scripts/download_model.py
 下载模型文件后，运行：
-'''
-    python visualizer_drag_gradio.py
-'''
+     python visualizer_drag_gradio.py
+     
 进行Gradio演示。
-
 
 ## Task 3: GAN for image inpainting
 ## TO DO//可做
