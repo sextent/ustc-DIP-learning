@@ -15,7 +15,7 @@ See [作业03-Play_with_GANs.pptx](https://rec.ustc.edu.cn/share/705bfa50-6e53-1
     Combine DragGAN with automatic facial landmark detection
     
 ### 实验结果：实现了自动处理功能
-<img src=./result/gif/2.gif width=80%>
+<img src="./result/gif/2.gif" width=80%>
 
 #### 使用说明
 下载模型文件，运行：
